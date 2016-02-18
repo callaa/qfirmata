@@ -1,0 +1,9 @@
+Makefile
+*.o
+*.so
+.*
+moc_*.cpp
+
+# Generated documentation
+doc/html
+
