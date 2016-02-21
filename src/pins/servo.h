@@ -26,7 +26,7 @@ class ServoPin : public Pin
 {
 	Q_OBJECT
 	//! The target angle. Range is [0, 200]
-	Q_PROPERTY(int angle READ angle WRITE setAngle NOTIFY angleChanged)
+	Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)
 
 	//! Minimum pulse duration in microseconds. Default is 1000 (corresponds to 0 deg)
 	Q_PROPERTY(int minPulse READ minPulse WRITE setMinPulse NOTIFY minPulseChanged)
@@ -38,8 +38,8 @@ public:
 	ServoPin(QObject *parent=nullptr);
 	~ServoPin();
 
-	void setAngle(int a);
-	int angle() const;
+	void setValue(int);
+	int value() const;
 
 	void setMinPulse(int p);
 	int minPulse() const;
@@ -53,7 +53,7 @@ protected:
 	void readSysex(const QByteArray &data) override;
 
 signals:
-	void angleChanged(int);
+	void valueChanged(int);
 	void minPulseChanged(int);
 	void maxPulseChanged(int);
 

@@ -20,11 +20,11 @@
 #include "../utils.h"
 
 struct ServoPin::Private {
-	uint16_t angle;
+	uint16_t value;
 	uint16_t minPulse;
 	uint16_t maxPulse;
 
-	Private() : angle(90), minPulse(1000), maxPulse(2000)
+	Private() : value(90), minPulse(1000), maxPulse(2000)
 	{ }
 };
 
@@ -39,19 +39,19 @@ ServoPin::~ServoPin()
 	delete d;
 }
 
-void ServoPin::setAngle(int a)
+void ServoPin::setValue(int a)
 {
 	a = qBound(0, a, 200); // 200 is the largest angle supported by arduino servo library
-	if(a != d->angle) {
-		d->angle = a;
+	if(a != d->value) {
+		d->value = a;
 		send();
-		emit angleChanged(a);
+		emit valueChanged(a);
 	}
 }
 
-int ServoPin::angle() const
+int ServoPin::value() const
 {
-	return d->angle;
+	return d->value;
 }
 
 void ServoPin::setMinPulse(int p)
@@ -100,7 +100,7 @@ void ServoPin::writeInit(FirmataBackend &b)
 
 void ServoPin::writeValue(FirmataBackend &b)
 {
-	b.writeAnalogPin(pin(), d->angle);
+	b.writeAnalogPin(pin(), d->value);
 }
 
 void ServoPin::readSysex(const QByteArray &data)

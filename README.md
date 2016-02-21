@@ -141,7 +141,7 @@ A hobby servo output pin.
 
     ServoPin {
         pin: pin#
-        angle: 90      // angle in range 0--180
+        value: 90      // angle in range 0--180
         minPulse: 1000 // pulse length in microseconds for angle 0
         maxPulse: 2000 // pulse length in microseconds for angle 180
     }

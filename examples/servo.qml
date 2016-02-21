@@ -17,7 +17,7 @@ Window {
 
 		ServoPin {
 			pin: 9
-			angle: dial.value
+			value: dial.value
 		}
 	}
 
