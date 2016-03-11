@@ -125,6 +125,8 @@ Analog input pin.
 
 Note: Analog pins are identified by two numbers: the pin number and the channel number. You can leave the pin number out and QFirmata will query it automatically.
 
+If you want to be notified every time the pin is sampled, even when the value does not change, connect to the signal `sampled` instead of `valueChanged`
+
 ### PwmPin
 
 PWM output pin.

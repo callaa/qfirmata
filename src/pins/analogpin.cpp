@@ -77,6 +77,7 @@ void AnalogPin::setRawValue(int v)
 		d->value = v;
 		emit valueChanged();
 	}
+	emit sampled();
 }
 
 int AnalogPin::rawValue() const

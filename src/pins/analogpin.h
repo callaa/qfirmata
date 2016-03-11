@@ -71,6 +71,9 @@ signals:
 	void scaleChanged(double);
 	void channelChanged(int);
 
+	//! This signal is emitted when the analog pin is sampled, even if the value does not change
+	void sampled();
+
 protected:
 	void writeInit(FirmataBackend&) override;
 	void readSysex(const QByteArray &data) override;
