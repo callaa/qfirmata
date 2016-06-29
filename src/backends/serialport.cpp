@@ -17,12 +17,12 @@
 
 #include "serialport.h"
 
-#include <QPointer>
+#include <QScopedPointer>
 #include <QSerialPort>
 #include <QDebug>
 
 struct SerialFirmata::Private {
-	QPointer<QSerialPort> port;
+	QScopedPointer<QSerialPort> port;
 	QString device;
 	int baudRate;
 
@@ -51,14 +51,14 @@ void SerialFirmata::setDevice(const QString &device)
 	if(device != d->device) {
 		d->device = device;
 		if(device.isEmpty()) {
-			d->port = nullptr;
+			d->port.reset();
 			setStatusText(QStringLiteral("Device not set"));
 
 		} else {
-			d->port = new QSerialPort(device);
+			d->port.reset(new QSerialPort(device));
 			d->port->setBaudRate(d->baudRate);
 			connect(
-				d->port,
+				d->port.data(),
 				static_cast<void(QSerialPort::*)(QSerialPort::SerialPortError)>(&QSerialPort::error),
 				[this](QSerialPort::SerialPortError e) {
 					QString msg;
@@ -77,7 +77,7 @@ void SerialFirmata::setDevice(const QString &device)
 				qWarning() << "Error opening" << device << d->port->error();
 
 			} else {
-				connect(d->port, &QSerialPort::readyRead, this, &SerialFirmata::onReadyRead);
+				connect(d->port.data(), &QSerialPort::readyRead, this, &SerialFirmata::onReadyRead);
 				setAvailable(true);
 				setStatusText(QStringLiteral("Serial port opened"));
 			}
