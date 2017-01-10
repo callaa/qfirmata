@@ -56,7 +56,7 @@ public:
 	//! At the moment, autoreporting is be enabled when an encoder pin is initialized.
 	static void setAutoReporting(FirmataBackend &backend, bool enable);
 
-public slots:
+public Q_SLOTS:
 	//! Reset encoder value to zero
 	void reset();
 
@@ -67,7 +67,7 @@ protected:
 	void writeInit(FirmataBackend&) override;
 	void readSysex(const QByteArray &data) override;
 
-signals:
+Q_SIGNALS:
 	void valueChanged(int);
 	void pin2Changed(int);
 	void autoReportChanged(bool);

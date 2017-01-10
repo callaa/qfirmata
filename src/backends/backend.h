@@ -92,7 +92,7 @@ public:
 	//! Send a SysEx command
 	void writeSysex(const uint8_t *data, int len);
 
-signals:
+Q_SIGNALS:
 	//! An analog message was just received
 	void analogRead(uint8_t channel, uint16_t value);
 

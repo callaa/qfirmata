@@ -40,7 +40,7 @@ public:
 
 	QHash<int, QByteArray> roleNames() const;
 
-public slots:
+public Q_SLOTS:
 	void refresh();
 
 private:

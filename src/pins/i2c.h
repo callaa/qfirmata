@@ -40,7 +40,7 @@ public:
 	int delay() const;
 	void setDelay(int);
 
-public slots:
+public Q_SLOTS:
 	//! Write data to the given I2C address
 	void write(int address, QList<int> data);
 
@@ -58,7 +58,7 @@ public slots:
 	//! Stop autoreading the given address
 	void stopAutoRead(int address);
 
-signals:
+Q_SIGNALS:
 	//! I2C reply received
 	void reply(int address, int reg, const QList<int> &data);
 

@@ -52,7 +52,7 @@ protected:
 	void writeValue(FirmataBackend&) override;
 	void readSysex(const QByteArray &data) override;
 
-signals:
+Q_SIGNALS:
 	void valueChanged(int);
 	void minPulseChanged(int);
 	void maxPulseChanged(int);

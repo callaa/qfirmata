@@ -71,7 +71,7 @@ public:
 	// There is no need to call this function manually
 	void sysex(const QByteArray &data);
 
-signals:
+Q_SIGNALS:
 	void pinChanged(int);
 
 protected:

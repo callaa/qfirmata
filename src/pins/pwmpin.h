@@ -48,7 +48,7 @@ protected:
 	void writeValue(FirmataBackend&) override;
 	void readSysex(const QByteArray &data) override;
 
-signals:
+Q_SIGNALS:
 	void valueChanged(double);
 	void scaleChanged(double);
 

@@ -66,7 +66,7 @@ public:
 	int channel() const;
 	void setChannel(int c);
 
-signals:
+Q_SIGNALS:
 	void valueChanged();
 	void scaleChanged(double);
 	void channelChanged(int);

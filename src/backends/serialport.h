@@ -51,14 +51,14 @@ public:
 	int baudRate() const;
 	void setBaudRate(int br);
 
-signals:
+Q_SIGNALS:
 	void deviceChanged(const QString &device);
 	void baudRateChanged(int baudRate);
 
 protected:
 	void writeBuffer(const uint8_t *buffer, int len) override;
 
-private slots:
+private Q_SLOTS:
 	void onReadyRead();
 
 private:

@@ -89,7 +89,7 @@ public:
 
 	QQmlListProperty<Pin> pins();
 
-signals:
+Q_SIGNALS:
 	void backendChanged();
 	void initPinsChanged(bool);
 	void readyChanged(bool);
@@ -102,7 +102,7 @@ signals:
 	//! Sysex string received
 	void stringReceived(const QString&);
 
-private slots:
+private Q_SLOTS:
 	void onAnalogRead(uint8_t channel, uint16_t value);
 	void onDigitalRead(uint8_t port, uint8_t value);
 	void onDigitalPinRead(uint8_t pin, bool value);

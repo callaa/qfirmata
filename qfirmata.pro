@@ -1,6 +1,7 @@
 TEMPLATE = lib
 CONFIG += plugin c++11 debug
 QT += qml serialport
+DEFINES += QT_NO_SIGNALS_SLOTS_KEYWORDS
 
 DESTDIR = imports/Firmata
 TARGET  = qmlfirmataplugin
